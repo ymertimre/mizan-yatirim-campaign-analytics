@@ -1,0 +1,29 @@
+instrument_id,ticker,instrument_name,instrument_type,sector
+INS001,NVTEK,Nova Teknoloji,stock,Technology
+INS002,MZYAZ,Mizrak Yazilim,stock,Technology
+INS003,DGTLS,Dijitalis Bilisim,stock,Technology
+INS004,ANDGD,Anadolu Gida,stock,Food Retail
+INS005,BRKMR,Bereketli Market,stock,Food Retail
+INS006,SFSAG,Sifa Saglik,stock,Healthcare
+INS007,LKMED,Lokum Medikal,stock,Healthcare
+INS008,CMNTO,Cimento Toros,stock,Cement
+INS009,TRKCL,Turkuaz Celik,stock,Steel
+INS010,EGENR,Ege Enerji,stock,Energy
+INS011,YSLEN,Yesil Enerji,stock,Energy
+INS012,SVNMK,Savunma Makine,stock,Defence
+INS013,HVLJS,Havaliman Lojistik,stock,Transport
+INS014,TKSTL,Tekstil Anadolu,stock,Textile
+INS015,OTOYD,Oto Yedek Parca,stock,Automotive
+INS016,GYOKN,Konut GYO,stock,Real Estate
+INS017,TARIM,Tarim Urunleri,stock,Agriculture
+INS018,KMYSN,Kimya Sanayi,stock,Chemicals
+INS019,KLBNK,Klasik Bank,stock,Conventional Banking
+INS020,ISTFK,Istanbul Faktoring,stock,Conventional Finance
+INS021,BRUIC,Bira Icecek,stock,Beverages
+INS022,SANSO,Sans Oyunlari,stock,Gaming
+INS023,KTF01,Mizan Katilim Hisse Fonu,participation_fund,Equity Fund
+INS024,KTF02,Mizan Teknoloji Katilim Fonu,participation_fund,Equity Fund
+INS025,KTF03,Mizan Para Piyasasi Katilim Fonu,participation_fund,Money Market Fund
+INS026,SKK27,Kira Sertifikasi 2027,lease_certificate,Lease Certificate
+INS027,SKK28,Kira Sertifikasi 2028,lease_certificate,Lease Certificate
+INS028,ALTNF,Mizan Altin Katilim Fonu,gold_fund,Gold
