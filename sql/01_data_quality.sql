@@ -64,7 +64,7 @@ FROM p
 WHERE (next_from IS NULL AND valid_to <> DATE '9999-12-31')
    OR valid_to <> next_from;
 
--- DQ-07: funnel steps must be in order
+-- DQ-07: funnel steps must be in order and complete
 WITH f AS (
   SELECT user_id,
     MIN(IF(event_type = 'app_install',    event_date, NULL)) AS install_date,
@@ -73,9 +73,24 @@ WITH f AS (
     MIN(IF(event_type = 'first_trade',    event_date, NULL)) AS trade_date
   FROM `mizan-campaign-analytics.raw.funnel_events`
   GROUP BY user_id
+  
+  UNION ALL
+  SELECT 'TEST_1', DATE '2026-07-10', DATE '2026-07-05', NULL, NULL   -- account before install
+  UNION ALL
+  SELECT 'TEST_2', DATE '2026-07-10', NULL, NULL, DATE '2026-07-12'   -- trade without account/deposit
 )
-SELECT *
+SELECT *,
+  CASE
+    WHEN account_date IS NOT NULL AND install_date IS NULL THEN 'missing install'
+    WHEN deposit_date IS NOT NULL AND account_date IS NULL THEN 'missing account'
+    WHEN trade_date   IS NOT NULL AND deposit_date IS NULL THEN 'missing deposit'
+    WHEN account_date < install_date OR deposit_date < account_date
+      OR trade_date < deposit_date                         THEN 'out of order'
+  END AS issue
 FROM f
-WHERE account_date < install_date
+WHERE (account_date IS NOT NULL AND install_date IS NULL)
+   OR (deposit_date IS NOT NULL AND account_date IS NULL)
+   OR (trade_date   IS NOT NULL AND deposit_date IS NULL)
+   OR account_date < install_date
    OR deposit_date < account_date
    OR trade_date   < deposit_date;
